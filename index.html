@@ -1,0 +1,1201 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aurum Business Pro</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+background:linear-gradient(135deg,#001f4d,#0a2a5c,#d4a437);
+min-height:100vh;
+overflow-x:hidden;
+}
+
+.auth-container{
+width:100%;
+display:flex;
+justify-content:center;
+align-items:center;
+min-height:100vh;
+padding:20px;
+}
+
+.auth-box{
+width:100%;
+max-width:420px;
+background:rgba(15,23,42,0.98);
+padding:25px;
+border-radius:24px;
+box-shadow:0 20px 40px rgba(0,0,0,0.4);
+}
+
+.logo-circle{
+width:90px;
+height:90px;
+border-radius:50%;
+background:linear-gradient(135deg,#d4a437,#f7d774);
+display:flex;
+justify-content:center;
+align-items:center;
+margin:0 auto 20px;
+font-size:40px;
+box-shadow:0 10px 25px rgba(245,197,66,0.4);
+}
+
+.title{
+text-align:center;
+font-size:28px;
+color:#f5c542;
+font-weight:700;
+margin-bottom:10px;
+}
+
+.subtitle{
+text-align:center;
+color:#cbd5e1;
+margin-bottom:25px;
+font-size:14px;
+}
+
+.input-group{
+display:flex;
+flex-direction:column;
+margin-bottom:15px;
+}
+
+.input-group label{
+margin-bottom:6px;
+color:#cbd5e1;
+font-size:13px;
+}
+
+.input-group input,
+.input-group select{
+padding:14px;
+border:none;
+border-radius:14px;
+background:#1e293b;
+color:#fff;
+font-size:14px;
+outline:none;
+}
+
+.input-group input:focus,
+.input-group select:focus{
+border:1px solid #f5c542;
+background:#111827;
+}
+
+.phone-box{
+display:flex;
+align-items:center;
+background:#1e293b;
+border-radius:14px;
+overflow:hidden;
+}
+
+.phone-box span{
+padding:14px;
+background:#0f172a;
+color:#f5c542;
+font-weight:700;
+}
+
+.phone-box input{
+flex:1;
+border:none;
+background:transparent;
+color:#fff;
+padding:14px;
+outline:none;
+}
+
+button{
+width:100%;
+padding:14px;
+border:none;
+border-radius:14px;
+cursor:pointer;
+font-weight:700;
+margin-top:10px;
+transition:0.3s;
+}
+
+button:hover{
+transform:scale(1.02);
+}
+
+.btn-primary{
+background:linear-gradient(135deg,#d4a437,#f7d774);
+color:#000;
+}
+
+.btn-secondary{
+background:#111827;
+color:#fff;
+}
+
+.security-box{
+margin-top:20px;
+background:#111827;
+border:1px solid #1e293b;
+color:#94a3b8;
+padding:14px;
+border-radius:14px;
+text-align:center;
+font-size:12px;
+}
+
+.small{
+text-align:center;
+margin-top:15px;
+font-size:12px;
+color:#94a3b8;
+}
+
+#app{
+display:none;
+width:100%;
+max-width:500px;
+margin:auto;
+min-height:100vh;
+background:#f5f7fb;
+position:relative;
+}
+
+.header{
+background:#0f172a;
+color:#fff;
+padding:18px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+position:sticky;
+top:0;
+z-index:999;
+}
+
+.logo{
+color:#f5c542;
+font-size:22px;
+font-weight:700;
+}
+
+.page{
+display:none;
+padding:15px;
+padding-bottom:120px;
+}
+
+.page.active{
+display:block;
+}
+
+.banner{
+width:100%;
+border-radius:18px;
+margin-bottom:15px;
+}
+
+.balance-box{
+background:linear-gradient(135deg,#0f172a,#1e293b);
+color:#fff;
+padding:20px;
+border-radius:18px;
+margin-bottom:15px;
+}
+
+.balance-box h1{
+margin-top:10px;
+font-size:30px;
+}
+
+.vip-status{
+margin-top:12px;
+background:#14b85a;
+padding:8px;
+border-radius:10px;
+text-align:center;
+font-size:13px;
+font-weight:600;
+}
+
+.revenue-box{
+background:#fff;
+border-radius:15px;
+padding:15px;
+margin-bottom:15px;
+display:flex;
+justify-content:space-between;
+box-shadow:0 5px 15px rgba(0,0,0,0.05);
+}
+
+.action-grid{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:10px;
+margin-bottom:20px;
+}
+
+.action-btn{
+background:#fff;
+padding:15px;
+border-radius:14px;
+text-align:center;
+font-size:13px;
+cursor:pointer;
+box-shadow:0 5px 10px rgba(0,0,0,0.05);
+}
+
+.card{
+background:#fff;
+border-radius:20px;
+overflow:hidden;
+margin-bottom:20px;
+box-shadow:0 10px 25px rgba(0,0,0,0.08);
+}
+
+.card img{
+width:100%;
+height:220px;
+object-fit:cover;
+}
+
+.card-content{
+padding:18px;
+}
+
+.grid-info{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:10px;
+font-size:14px;
+color:#555;
+margin-bottom:15px;
+}
+
+.profile-card{
+background:#fff;
+border-radius:20px;
+padding:25px;
+text-align:center;
+margin-bottom:15px;
+}
+
+.avatar{
+width:80px;
+height:80px;
+border-radius:50%;
+background:#f5c542;
+display:flex;
+justify-content:center;
+align-items:center;
+font-size:35px;
+margin:auto;
+}
+
+.menu{
+background:#fff;
+border-radius:18px;
+overflow:hidden;
+}
+
+.menu-item{
+display:flex;
+justify-content:space-between;
+padding:16px;
+border-bottom:1px solid #eee;
+cursor:pointer;
+}
+
+.nav{
+position:fixed;
+bottom:0;
+left:50%;
+transform:translateX(-50%);
+width:100%;
+max-width:500px;
+background:#fff;
+display:grid;
+grid-template-columns:repeat(4,1fr);
+border-top:1px solid #ddd;
+z-index:999;
+}
+
+.nav button{
+background:none;
+color:#0f172a;
+font-size:22px;
+}
+
+.download-box{
+margin-top:20px;
+padding:20px;
+border-radius:18px;
+background:linear-gradient(135deg,#0f172a,#1e293b);
+color:#fff;
+text-align:center;
+}
+
+.download-btn{
+background:linear-gradient(135deg,#d4a437,#f7d774);
+color:#000;
+margin-top:15px;
+}
+
+#installBtn{
+display:none;
+}
+
+.withdraw-modal{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.7);
+display:flex;
+justify-content:center;
+align-items:center;
+z-index:99999;
+padding:15px;
+}
+
+.withdraw-box{
+width:100%;
+max-width:420px;
+background:#fff;
+border-radius:24px;
+overflow:hidden;
+}
+
+.withdraw-header{
+background:linear-gradient(135deg,#0f172a,#1e293b);
+color:#fff;
+padding:18px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+}
+
+.withdraw-body{
+padding:20px;
+}
+
+.form-group{
+margin-bottom:18px;
+display:flex;
+flex-direction:column;
+}
+
+.form-group input,
+.form-group select{
+padding:14px;
+border-radius:14px;
+border:1px solid #d1d5db;
+font-size:14px;
+outline:none;
+background:#f8fafc;
+}
+
+.balance-info{
+background:#f1f5f9;
+padding:14px;
+border-radius:14px;
+margin-bottom:18px;
+}
+
+.withdraw-btn{
+background:linear-gradient(135deg,#d4a437,#f7d774);
+}
+
+.stats-grid{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:12px;
+margin-bottom:20px;
+}
+
+.stat-card{
+background:#fff;
+padding:18px;
+border-radius:18px;
+text-align:center;
+box-shadow:0 5px 15px rgba(0,0,0,0.05);
+}
+
+</style>
+</head>
+<body>
+
+<div class="auth-container">
+<div class="auth-box" id="auth">
+
+<div class="logo-circle">💎</div>
+
+<h1 class="title">Aurum Business Pro</h1>
+
+<p class="subtitle">
+Plateforme digitale professionnelle sécurisée
+</p>
+
+<div class="input-group">
+<label>🌍 Pays</label>
+<select id="country" onchange="updatePhoneCode()">
+<option value="+226">🇧🇫 Burkina Faso (+226)</option>
+<option value="+225">🇨🇮 Côte d'Ivoire (+225)</option>
+<option value="+221">🇸🇳 Sénégal (+221)</option>
+<option value="+223">🇲🇱 Mali (+223)</option>
+</select>
+</div>
+
+<div class="input-group">
+<label>📞 Téléphone</label>
+<div class="phone-box">
+<span id="phoneCode">+226</span>
+<input type="tel" id="phone" placeholder="XX XX XX XX">
+</div>
+</div>
+
+<div class="input-group">
+<label>📧 Email</label>
+<input type="email" id="email" placeholder="exemple@gmail.com">
+</div>
+
+<div class="input-group">
+<label>🔒 Mot de passe</label>
+<input type="password" id="pass" placeholder="••••••••">
+</div>
+
+<div class="input-group">
+<label>🎁 Code de parrainage</label>
+<input type="text" id="ref" placeholder="AURUM2026">
+</div>
+
+<button class="btn-primary" onclick="register()">
+Créer un compte
+</button>
+
+<button class="btn-secondary" onclick="login()">
+Se connecter
+</button>
+
+<div class="security-box">
+🔐 Connexion sécurisée • SSL • Protection Premium
+</div>
+
+<div class="small">
+Aurum Business Pro © 2026
+</div>
+
+</div>
+</div>
+
+<div id="app">
+
+<div class="header">
+<div class="logo">AURUM</div>
+<div id="userId">USER</div>
+</div>
+
+<div id="home" class="page active"></div>
+<div id="orders" class="page"></div>
+<div id="team" class="page"></div>
+<div id="me" class="page"></div>
+
+<div class="nav">
+<button onclick="showPage('home')">🏠</button>
+<button onclick="showPage('orders')">🚀</button>
+<button onclick="showPage('team')">👥</button>
+<button onclick="showPage('me')">⚙️</button>
+</div>
+
+<button id="installBtn">Installer</button>
+
+</div>
+
+<script>
+
+function updatePhoneCode(){
+
+const country = document.getElementById('country').value;
+document.getElementById('phoneCode').innerText = country;
+
+}
+
+updatePhoneCode();
+
+const auth = document.getElementById('auth');
+const app = document.getElementById('app');
+
+const home = document.getElementById('home');
+const ordersPage = document.getElementById('orders');
+const teamPage = document.getElementById('team');
+const mePage = document.getElementById('me');
+
+let users = JSON.parse(localStorage.getItem('users')) || [];
+let orders = JSON.parse(localStorage.getItem('orders')) || [];
+let transactions = JSON.parse(localStorage.getItem('transactions')) || [];
+
+let user = null;
+
+/* ================= PRODUITS PREMIUM ================= */
+
+const products = [
+
+{
+  id:1,
+  name:"VIP 1",
+  subtitle:"Starter Premium",
+  price:3000,
+  daily:750,
+  total:45000,
+  duration:60,
+  badge:"Populaire",
+  color:"#d4af37",
+  img:"https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?q=80&w=1200&auto=format&fit=crop"
+},
+
+{
+  id:2,
+  name:"VIP 2",
+  subtitle:"Gold Business",
+  price:15000,
+  daily:1440,
+  total:43200,
+  duration:30,
+  badge:"Rentable",
+  color:"#c9a227",
+  img:"https://images.unsplash.com/photo-1559526324-593bc073d938?q=80&w=1200&auto=format&fit=crop"
+},
+
+{
+  id:3,
+  name:"VIP 3",
+  subtitle:"Luxury Investor",
+  price:40000,
+  daily:19200,
+  total:192000,
+  duration:10,
+  badge:"VIP",
+  color:"#e5c158",
+  img:"https://images.unsplash.com/photo-1518546305927-5a555bb7020d?q=80&w=1200&auto=format&fit=crop"
+},
+
+{
+  id:4,
+  name:"VIP 4",
+  subtitle:"Elite Premium",
+  price:60000,
+  daily:52800,
+  total:528000,
+  duration:10,
+  badge:"Elite",
+  color:"#f5d76e",
+  img:"https://images.unsplash.com/photo-1521791136064-7986c2920216?q=80&w=1200&auto=format&fit=crop"
+},
+
+{
+  id:5,
+  name:"VIP 5",
+  subtitle:"Diamond Plan",
+  price:100000,
+  daily:84000,
+  total:840000,
+  duration:10,
+  badge:"Diamond",
+  color:"#ffd700",
+  img:"https://images.unsplash.com/photo-1556740749-887f6717d7e4?q=80&w=1200&auto=format&fit=crop"
+},
+
+{
+  id:6,
+  name:"VIP 6",
+  subtitle:"Executive Club",
+  price:200000,
+  daily:129984,
+  total:1299840,
+  duration:10,
+  badge:"Executive",
+  color:"#ffcc33",
+  img:"https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=1200&auto=format&fit=crop"
+},
+
+{
+  id:7,
+  name:"VIP 7",
+  subtitle:"Royal Investor",
+  price:350000,
+  daily:246720,
+  total:2467200,
+  duration:10,
+  badge:"Royal",
+  color:"#f0b90b",
+  img:"https://images.unsplash.com/photo-1507679799987-c73779587ccf?q=80&w=1200&auto=format&fit=crop"
+},
+
+{
+  id:8,
+  name:"VIP 8",
+  subtitle:"Prestige Max",
+  price:550000,
+  daily:412488,
+  total:4124880,
+  duration:10,
+  badge:"Prestige",
+  color:"#f7c948",
+  img:"https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=1200&auto=format&fit=crop"
+},
+
+{
+  id:9,
+  name:"VIP 9",
+  subtitle:"Imperial Gold",
+  price:800000,
+  daily:600000,
+  total:6000000,
+  duration:10,
+  badge:"Imperial",
+  color:"#ffdf6c",
+  img:"https://images.unsplash.com/photo-1460317442991-0ec209397118?q=80&w=1200&auto=format&fit=crop"
+},
+
+{
+  id:10,
+  name:"VIP 10",
+  subtitle:"Ultimate Emirates",
+  price:1000000,
+  daily:800400,
+  total:8004000,
+  duration:10,
+  badge:"Ultra VIP",
+  color:"#ffb703",
+  img:"https://images.unsplash.com/photo-1497366754035-f200968a6e72?q=80&w=1200&auto=format&fit=crop"
+}
+
+];
+
+function save(){
+
+localStorage.setItem('users',JSON.stringify(users));
+localStorage.setItem('orders',JSON.stringify(orders));
+localStorage.setItem('transactions',JSON.stringify(transactions));
+
+}
+
+function updateCurrentUser(){
+
+const index = users.findIndex(u=>u.id===user.id);
+
+if(index !== -1){
+users[index] = user;
+}
+
+save();
+
+}
+
+function register(){
+
+const phone = document.getElementById('phone').value.trim();
+const pass = document.getElementById('pass').value.trim();
+const ref = document.getElementById('ref').value.trim();
+
+if(!phone || !pass){
+alert('Veuillez remplir tous les champs');
+return;
+}
+
+if(users.find(u=>u.phone===phone)){
+alert('Compte déjà existant');
+return;
+}
+
+const newUser = {
+id:Date.now(),
+phone,
+password:pass,
+balance:5000,
+code:'AI'+Math.random().toString(36).substring(2,8),
+referrer:ref
+};
+
+users.push(newUser);
+save();
+
+alert('Compte créé avec succès');
+
+}
+
+function login(){
+
+const phone = document.getElementById('phone').value.trim();
+const pass = document.getElementById('pass').value.trim();
+
+const foundUser = users.find(
+u=>u.phone===phone && u.password===pass
+);
+
+if(!foundUser){
+alert('Identifiants incorrects');
+return;
+}
+
+user = foundUser;
+
+auth.style.display='none';
+app.style.display='block';
+
+document.getElementById('userId').innerText = user.phone;
+
+renderAll();
+
+}
+
+function logout(){
+
+user = null;
+auth.style.display='block';
+app.style.display='none';
+
+}
+
+function showPage(page){
+
+document.querySelectorAll('.page')
+.forEach(p=>p.classList.remove('active'));
+
+document.getElementById(page)
+.classList.add('active');
+
+}
+
+function renderHome(){
+
+let gains = transactions
+.filter(t=>t.user_id===user.id && t.type==='gain')
+.reduce((sum,t)=>sum+t.amount,0);
+
+home.innerHTML = `
+
+<img class="banner"
+src="https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/5e342a106822209.5f992383e20e8.jpg">
+
+<div class="balance-box">
+<p>Solde disponible</p>
+<h1>${user.balance.toLocaleString()} FCFA</h1>
+<div class="vip-status">Compte VIP Actif</div>
+</div>
+
+<div class="stats-grid">
+<div class="stat-card">
+<h3>${gains.toLocaleString()}</h3>
+<p>Revenus</p>
+</div>
+
+<div class="stat-card">
+<h3>${orders.filter(o=>o.user_id===user.id).length}</h3>
+<p>VIP actifs</p>
+</div>
+</div>
+
+<div class="action-grid">
+<div class="action-btn" onclick="deposit()">💳<br>Dépôt</div>
+<div class="action-btn" onclick="withdraw()">🏧<br>Retrait</div>
+<div class="action-btn" onclick="showPage('orders')">🚀<br>VIP</div>
+<div class="action-btn" onclick="showPage('team')">👥<br>Équipe</div>
+</div>
+`;
+
+products.forEach((p,index)=>{
+
+home.innerHTML += `
+<div class="card">
+<img src="${p.img}">
+<div class="card-content">
+<h3>${p.name}</h3>
+<div class="grid-info">
+<p>Prix : <b>${p.price} FCFA</b></p>
+<p>Jour : <b>${p.daily} FCFA</b></p>
+<p>Total : <b>${p.total} FCFA</b></p>
+<p>Durée : <b>${p.duration} jours</b></p>
+</div>
+<button class="btn-primary" onclick="buy(${index})">
+Activer l'investissement
+</button>
+</div>
+</div>
+`;
+
+});
+
+}
+
+function buy(index){
+
+const p = products[index];
+
+if(user.balance < p.price){
+alert('Solde insuffisant');
+return;
+}
+
+user.balance -= p.price;
+
+orders.push({
+id:Date.now(),
+user_id:user.id,
+product:p.name,
+daily:p.daily,
+lastClaim:0
+});
+
+transactions.push({
+user_id:user.id,
+type:'achat',
+amount:p.price,
+date:new Date().toLocaleString()
+});
+
+updateCurrentUser();
+renderAll();
+
+alert('VIP activé avec succès');
+
+}
+
+function renderOrders(){
+
+const myOrders = orders.filter(o=>o.user_id===user.id);
+
+ordersPage.innerHTML = '<h2>Mes investissements</h2><br>';
+
+if(myOrders.length===0){
+ordersPage.innerHTML += '<p>Aucun investissement actif</p>';
+return;
+}
+
+myOrders.forEach(order=>{
+
+ordersPage.innerHTML += `
+<div class="card">
+<div class="card-content">
+<h3>${order.product}</h3>
+<p>Gain journalier : <b>${order.daily} FCFA</b></p>
+<button class="btn-primary" onclick="claim(${order.id})">
+Réclamer le gain
+</button>
+</div>
+</div>
+`;
+
+});
+
+}
+
+function claim(id){
+
+const order = orders.find(o=>o.id===id);
+
+if(!order) return;
+
+if(Date.now() - order.lastClaim < 86400000){
+alert('Déjà réclamé aujourd’hui');
+return;
+}
+
+order.lastClaim = Date.now();
+user.balance += order.daily;
+
+transactions.push({
+user_id:user.id,
+type:'gain',
+amount:order.daily,
+date:new Date().toLocaleString()
+});
+
+updateCurrentUser();
+renderAll();
+
+alert('Gain réclamé');
+
+}
+
+function renderTeam(){
+
+const link = window.location.origin +
+window.location.pathname + '?ref=' + user.code;
+
+teamPage.innerHTML = `
+<div class="card">
+<div class="card-content">
+<h3>Mon lien d’invitation</h3>
+<p style="margin:10px 0;word-break:break-all;">
+${link}
+</p>
+<button class="btn-primary" onclick="copyLink('${link}')">
+Copier mon lien
+</button>
+</div>
+</div>
+`;
+
+}
+
+function copyLink(link){
+
+navigator.clipboard.writeText(link);
+alert('Lien copié');
+
+}
+
+function renderMe(){
+
+mePage.innerHTML = `
+
+<div class="profile-card">
+<div class="avatar">👤</div>
+<h2 style="margin-top:15px;">${user.phone}</h2>
+<p>Membre Premium</p>
+</div>
+
+<div class="menu">
+
+<div class="menu-item" onclick="deposit()">
+<span>💳 Dépôt</span>
+<span>›</span>
+</div>
+
+<div class="menu-item" onclick="withdraw()">
+<span>🏧 Retrait</span>
+<span>›</span>
+</div>
+
+<div class="menu-item" onclick="showTransactions()">
+<span>📜 Historique</span>
+<span>›</span>
+</div>
+
+<div class="menu-item" onclick="logout()">
+<span>⏻ Déconnexion</span>
+<span>›</span>
+</div>
+
+</div>
+
+<div class="download-box">
+<h3>Installer l’application</h3>
+<p style="margin-top:10px;">
+Téléchargez Aurum Business Pro sur votre téléphone
+</p>
+<button class="download-btn" id="installAppBtn">
+📲 Télécharger l'application
+</button>
+</div>
+
+`;
+
+setTimeout(()=>{
+
+const btn = document.getElementById('installAppBtn');
+
+if(btn){
+btn.onclick = installPWA;
+}
+
+},100);
+
+}
+
+function showTransactions(){
+
+let myTx = transactions.filter(
+t=>t.user_id===user.id
+);
+
+let html = `
+<div class="card">
+<div class="card-content">
+<h3>Historique des transactions</h3>
+`;
+
+if(myTx.length===0){
+html += '<p>Aucune transaction</p>';
+}else{
+
+myTx.reverse().forEach(t=>{
+
+html += `
+<div style="padding:12px;border-bottom:1px solid #eee;">
+<p><b>${t.type}</b></p>
+<p>${t.amount} FCFA</p>
+<p>${t.date || ''}</p>
+</div>
+`;
+
+});
+
+}
+
+html += '</div></div>';
+
+mePage.innerHTML = html;
+
+}
+
+function deposit(){
+window.open('https://westpay.cloud/link/yum3cdaamouf08cr','_blank');
+}
+
+function withdraw(){
+
+const modal = document.createElement('div');
+modal.className = 'withdraw-modal';
+
+modal.innerHTML = `
+<div class="withdraw-box">
+<div class="withdraw-header">
+<h2>Retrait</h2>
+<span style="cursor:pointer;font-size:28px;" id="closeWithdraw">×</span>
+</div>
+
+<div class="withdraw-body">
+
+<div class="form-group">
+<label>Méthode</label>
+<select id="withdrawMethod">
+<option>Wave</option>
+<option>Orange Money</option>
+<option>Moov Money</option>
+<option>MTN Mobile Money</option>
+</select>
+</div>
+
+<div class="form-group">
+<label>Numéro</label>
+<input type="tel" id="withdrawPhone">
+</div>
+
+<div class="form-group">
+<label>Montant</label>
+<input type="number" id="withdrawAmount">
+</div>
+
+<div class="balance-info">
+Solde disponible :
+<b>${user.balance.toLocaleString()} FCFA</b>
+</div>
+
+<button class="withdraw-btn" id="confirmWithdraw">
+Confirmer le retrait
+</button>
+
+</div>
+</div>
+`;
+
+document.body.appendChild(modal);
+
+modal.addEventListener('click',(e)=>{
+if(e.target===modal){
+modal.remove();
+}
+});
+
+document.getElementById('closeWithdraw').onclick = ()=>{
+modal.remove();
+};
+
+document.getElementById('confirmWithdraw').onclick = ()=>{
+
+const amount = Number(
+document.getElementById('withdrawAmount').value
+);
+
+if(!amount || amount<=0){
+alert('Montant invalide');
+return;
+}
+
+if(amount > user.balance){
+alert('Solde insuffisant');
+return;
+}
+
+user.balance -= amount;
+
+transactions.push({
+user_id:user.id,
+type:'retrait',
+amount,
+status:'En attente',
+date:new Date().toLocaleString()
+});
+
+updateCurrentUser();
+renderAll();
+
+alert('Retrait envoyé avec succès');
+
+modal.remove();
+
+};
+
+}
+
+function renderAll(){
+renderHome();
+renderOrders();
+renderTeam();
+renderMe();
+}
+
+let deferredPrompt;
+
+window.addEventListener('beforeinstallprompt',(e)=>{
+
+e.preventDefault();
+deferredPrompt = e;
+
+document.getElementById('installBtn').style.display='block';
+
+});
+
+async function installPWA(){
+
+if(!deferredPrompt){
+alert('Installation non disponible actuellement');
+return;
+}
+
+deferredPrompt.prompt();
+await deferredPrompt.userChoice;
+
+}
+
+window.addEventListener('load',()=>{
+
+const url = new URL(window.location.href);
+const ref = url.searchParams.get('ref');
+
+if(ref){
+document.getElementById('ref').value = ref;
+}
+
+});
+
+</script>
+
+</body>
+</html>

